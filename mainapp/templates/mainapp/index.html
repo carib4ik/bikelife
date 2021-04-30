@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+{% for category in categories %}
+<div class="col-sm-6">
+    <div class="card border-dark border-3">
+        <a href="{{ category.get_absolute_url }}">
+        <img src="{{ category.photo.url }}" class="img-fluid" alt="{{ category.title }}">
+        </a>
+        <div class="card-body">
+            <h1 class="card-title text-center">
+                <a href="{{ category.get_absolute_url }}" class="link-dark">{{ category.title }}</a>
+            </h1>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}
+

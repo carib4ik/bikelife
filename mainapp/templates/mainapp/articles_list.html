@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}{{ block.super }} :: {{ title }}{% endblock %}
+
+{% block content %}
+
+{% for article in articles %}
+<div class="col-sm-3">
+    <div class="card border-dark border-2">
+        <a href="{{ article.get_absolute_url }}">
+            <img src="{{ article.photo.url }}" class="img-fluid" alt="{{ article.title }}">
+        </a>
+        <div class="card-body">
+            <h5 class="card-title text-center">
+                <a href="{{ article.get_absolute_url }}" class="link-dark">{{ article.title }}</a>
+            </h5>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}
