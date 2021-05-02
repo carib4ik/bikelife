@@ -2,7 +2,14 @@ from django.db import models
 from django.urls import reverse
 
 
-class Category(models.Model):
+class BaseModel(models.Model):
+    objects = models.Manager()
+
+    class Meta:
+        abstract = True
+
+
+class Category(BaseModel):
     title = models.CharField(max_length=50)
     slug = models.SlugField(max_length=50, verbose_name='url', unique=True)
     photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
@@ -18,14 +25,13 @@ class Category(models.Model):
         ordering = ['title']
 
 
-class Article(models.Model):
+class Article(BaseModel):
     title = models.CharField(max_length=150)
     slug = models.SlugField(max_length=150, verbose_name='url', unique=True)
     content = models.TextField()
     photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
     category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='articles')
     file = models.FileField(upload_to='videos/%Y/%m/%d/', blank=True)
-
 
     def __str__(self):
         return self.title

@@ -1,6 +1,5 @@
 from django.views.generic import ListView, DetailView
 from .models import *
-from django.db.models import F
 
 
 class Home(ListView):
@@ -48,7 +47,4 @@ class Search(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['s'] = f"s={self.request.GET.get('s')}&"
         return context
-
-
