@@ -17,7 +17,6 @@ register = template.Library()
 def get_categories():
     return Category.objects.all()
 
-
 # @register.inclusion_tag('mainapp/navbar_menu_tpl.html')
 # def show_menu(menu_class='menu'):
 #     articles = Article.objects.all()
