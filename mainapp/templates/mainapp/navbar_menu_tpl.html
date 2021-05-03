@@ -1,0 +1,5 @@
+<div class="{{ menu_class }}">
+    {% for article in articles %}
+    <li><a class="dropdown-item" href="{{ article.get_absolute_url }}">{{ article.title }}</a></li>
+    {% endfor %}
+</div>
